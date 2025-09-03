@@ -65,8 +65,7 @@ class BaseDatasetProcessor(ABC):
         ``gpt-4`` model.
 
     .. note::
-        The numeric IDs of users and items start from 100, since the first 100
-        IDs are reserved for the special tokens in the model (e.g., <PAD>).
+        The numeric IDs of users and items start from 0.
 
     .. note::
         Currently, we only support the item title as the input of LLM. The
@@ -78,7 +77,7 @@ class BaseDatasetProcessor(ABC):
         be saved in the ``dataset_dir_{sample_user_size}/proc`` directory.
     """
 
-    START_ID: Final[int] = 100
+    START_ID: Final[int] = 0
 
     def __init__(
         self,
