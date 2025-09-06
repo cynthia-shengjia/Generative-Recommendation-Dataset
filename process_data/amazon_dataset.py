@@ -171,15 +171,16 @@ class AmazonDatasetProcessor(BaseDatasetProcessor):
         if self.meta_available:
             item2title = read_json(
                 os.path.join(raw_dir, f"meta_{self.dataset_name}.json"),
-                selected_cols=["asin", "title", "description", "brand", "categories"],
+                selected_cols=["asin", "title", "description", "brand", "categories", "price"],
                 standard=(self._version == 2018),
             )
-            item2title.columns = ["ItemID", "Title", "Description", "Brand", "Categories"]
+            item2title.columns = ["ItemID", "Title", "Description", "Brand", "Categories", "Price"]
             item2title["ItemID"] = item2title["ItemID"].astype(str)
             item2title["Title"] = item2title["Title"].astype(str)
             item2title["Description"] = item2title["Description"].astype(str)
             item2title["Brand"] = item2title["Brand"].astype(str)
             item2title["Categories"] = item2title["Categories"].apply(lambda x: ', '.join(x[0]) if isinstance(x, list) and len(x) > 0 else '')
+            item2title["Price"] = item2title["Price"].astype(str)
             item2title = item2title[
                 item2title["Title"].notna() & item2title["Title"] != "nan"
             ]
