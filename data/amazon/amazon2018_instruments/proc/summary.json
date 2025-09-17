@@ -1,0 +1,16 @@
+{
+    "user_size": 24926,
+    "item_size": 9956,
+    "interactions": 208566,
+    "density": 0.00084,
+    "interaction_length": {
+        "min": 5.0,
+        "max": 239.0,
+        "avg": 8.367408
+    },
+    "title_token": {
+        "min": 2.0,
+        "max": 248.0,
+        "avg": 18.504118
+    }
+}
